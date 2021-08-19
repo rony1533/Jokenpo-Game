@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.titulo {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.btn {
+    height: 400px;
+    width: 300px;
+    color: wheat;
+    background-color: black;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.300);
+    transition: 0.2s;
+}
+.btn:hover {
+    background-color: rgba(126, 125, 125, 0.342);
+    box-shadow:  0 8px 16px 0 rgba(0, 0, 0, 0.300);
+    color: black;
+    cursor: pointer;
+    transform: rotate(50deg);
+    transform: scale(1.05, 1.05);
+}
+.dica_card {
+    height: 30px;
+    border: 1px wheat solid;
+    border-radius: 5px;
+    background-color: white;
+}
+.btn:hover .dica_card {
+    border: 1px black solid;
+    background-color: antiquewhite;
+}
+.boot {
+    height: 400px;
+    width: 300px;
+    color: wheat;
+    background-color: rgb(143, 7, 7);
+    border: 0px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.boot:hover {
+    background-color: rgba(143, 7, 7, 0.774);
+    box-shadow:  0 8px 16px 0 rgba(0, 0, 0, 0.300);
+    color: black;
+    transform: rotate(50deg);
+    transform: scale(1.05, 1.05);
+}
+.div_img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 65%;
+    border: 1px grey solid;
+    border-radius: 5px;
+}
+.anti-tank {
+    background-image: url("anti_tank.jpg");
+}
+.infantaria {
+    background-image: url("infantaria.jpg");
+}
+.tank {
+    background-image: url("tank.png");
+}
+hr {
+    border: 1px #747766 solid;
+}

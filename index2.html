@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="titulo">
+        <img src="titulo.png" alt="">
+    </div>
+
+    <div class="container">
+
+
+        <h2 style="text-align: center;">Escolha uma carta:</h2>
+        <hr>
+        <br>
+
+        <div style="display: flex; justify-content: space-around;">
+
+            <button class="btn" onclick="comecar(1)" id="card1">
+                <div class="div_img anti-tank"></div>
+                <div style="display: inline;">
+                    <p>Anti-Tank</p>
+                    <img src="jkp_pedra.png" alt="" class="dica_card">
+                </div>
+            </button>
+
+            <button class="btn" onclick="comecar(2)" id="card2">
+                <div class="div_img infantaria"></div>
+                <p>Infantaria</p>
+                <img src="jkp_papel.png" alt="" class="dica_card">
+            </button>
+
+            <button class="btn" onclick="comecar(3)" id="card3">
+                <div class="div_img tank"></div>
+                <p>Tank</p>
+                <img src="jkp_tesoura.png" alt="" class="dica_card">
+            </button>
+
+        </div>
+        <br>
+
+        <hr>
+        <h2 style="text-align: center; color: rgb(0, 0, 0);">X</h2>
+        <hr>
+
+        <div class="div_cards" id="oponente" style="display: none; text-align: center;">
+
+            <button class="boot" id="card_boot">
+                <div class="div_img" id="inimigo"></div>
+                <p id="p_inimigo"></p>
+                <img src="" alt="" id="dica_inimigo" class="dica_card">
+            </button>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    let card_oponente = [{
+        titulo: 'Anti-Tank',
+        image: 'anti_tank.jpg',
+        dica: 'jkp_pedra.png'
+    },
+    {
+        titulo: 'Infantaria',
+        image: 'infantaria.jpg',
+        dica: 'jkp_papel.png'
+    },
+    {
+        titulo: 'Tank',
+        image: 'tank.png',
+        dica: 'jkp_tesoura.png'
+    }];
+
+    let historico = [];
+    let pontuacao = 0;
+    let coracoes = 10;
+    let combo = 0;
+
+    function recomecar() {
+        card1.style.display = '';
+        card2.style.display = '';
+        card3.style.display = '';
+        oponente.style.display = 'none';
+
+        document.getElementById(`card1`).disabled = false;
+        document.getElementById(`card2`).disabled = false;
+        document.getElementById(`card3`).disabled = false;
+    }
+
+    function comecar(carta) {
+
+        document.getElementById(`card${carta}`).disabled = true;
+
+        if (coracoes >= 1) {
+
+            if (carta != 1) {
+                card1.style.display = 'none';
+            }
+            if (carta != 2) {
+                card2.style.display = 'none';
+            }
+            if (carta != 3) {
+                card3.style.display = 'none';
+            }
+
+            let boot = parseInt(Math.random() * 3 + 1);
+            console.log(`Jogador: ${carta} e Boot: ${boot}`);
+
+            oponente.style.display = 'block';
+            inimigo.style = `background-image: url(${card_oponente[boot - 1].image})`;
+            dica_inimigo.src = `${card_oponente[boot - 1].dica}`;
+            p_inimigo.innerHTML = `${card_oponente[boot - 1].titulo}`;
+
+            if (carta == boot) {
+                console.log('empate');
+            }
+            if (carta != boot) {
+
+                //Ganhou
+                if (carta == 1 && boot == 3) {
+                    console.log(`Jogador ganha: ${carta} pedra`);
+                    pontuacao = pontuacao + 10;
+                    spn_pontua.innerHTML = pontuacao;
+
+                    combo++;
+                    combos();
+                }
+                if (carta == 2 && boot == 1) {
+                    console.log(`Jogador ganha: ${carta} Papel`);
+                    pontuacao = pontuacao + 10;
+                    spn_pontua.innerHTML = pontuacao;
+
+                    combo++;
+                    combos();
+                }
+                if (carta == 3 && boot == 2) {
+                    console.log(`Jogador ganha: ${carta} tesoura`);
+                    pontuacao = pontuacao + 10;;
+                    spn_pontua.innerHTML = pontuacao;
+
+                    combo++;
+                    combos();
+                }
+
+                //Perdeu
+                if (carta == 1 && boot == 2) {
+                    console.log(`Papel X Pedra - Boot ganha: ${boot}`);
+                    coracoes--;
+                    vida.innerHTML = `${coracoes}`;
+                    combo = 0;
+                    combos();
+                }
+                if (carta == 2 && boot == 3) {
+                    console.log(`Boot ganha: ${boot} tesoura`);
+                    coracoes--;
+                    vida.innerHTML = `${coracoes}`;
+                    combo = 0;
+                    combos();
+                }
+                if (carta == 3 && boot == 1) {
+                    console.log(`Boot ganha: ${boot} pedra`);
+                    coracoes--;
+                    vida.innerHTML = `${coracoes}`;
+                    combo = 0;
+                    combos();
+                }
+
+            }
+
+        } else {
+            alert('Você perdeu todas as chances!!');
+        }
+
+    }
+
+    function combos() {
+
+        if (combo >= 1) {
+
+            if (combo == 2) {
+                // 150 pontos
+                spn_combo.innerHTML = `Combo Duplo!!`;
+                alert('Recebe 150');
+                pontuacao = pontuacao + 150;
+                spn_pontua.innerHTML = pontuacao;
+            }
+            if (combo == 3) {
+                // 200 pontos
+                spn_combo.innerHTML = `Combo Triplo!!`;
+                alert('Recebe 200');
+                pontuacao = pontuacao + 200;
+                spn_pontua.innerHTML = pontuacao;
+            }
+            if (combo == 5) {
+                // 300 pontos
+                spn_combo.innerHTML = `Combo Quintuplo!!`;
+                alert('Recebe 300');
+                pontuacao = pontuacao + 300;
+                spn_pontua.innerHTML = pontuacao;
+            }
+            if (combo == 10) {
+                // 500 pontos
+                spn_combo.innerHTML = `Combo Incrivel 10 vezes seguidas!!`;
+                alert('Recebe 500');
+                pontuacao = pontuacao + 500;
+                spn_pontua.innerHTML = pontuacao;
+            }
+        } else {
+            spn_combo.innerHTML = ``;
+        }
+
+    }
+
+</script>

@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: scroll;
+}
+.inpt {
+    border-left: none;
+    border-right: none;
+    border-top: 1px blue solid;
+    border-bottom: 1px blue solid;
+    padding-left: 10px;
+    border-radius: 2px;
+}
+.btn {
+    height: 300px;
+    width: 250px;
+    color: wheat;
+    background-color: black;
+    border: 0px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.btn:hover {
+    background-color: wheat;
+    color: black;
+    cursor: pointer;
+}
+.dica_card {
+    height: 30px;
+    border: 1px wheat solid;
+    border-radius: 5px;
+    background-color: white;
+}
+.btn:hover .dica_card {
+    border: 1px black solid;
+    background-color: antiquewhite;
+}
+.boot {
+    color: wheat;
+    background-color: rgb(214, 81, 48);
+    height: 300px;
+    width: 250px;
+    border: 0px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+.div_img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 65%;
+    border: 1px grey solid;
+    border-radius: 5px;
+}
+.anti-tank {
+    background-image: url("anti_tank.jpg");
+}
+.infantaria {
+    background-image: url("infantaria.jpg");
+}
+.tank {
+    background-image: url("tank.png");
+}
+.floatL {
+    float: left;
+}
+.div-user {
+    text-align: center;
+}
+.centro {
+    color: white;
+    background-color: grey;
+    padding: 5px;
+    border-radius: 5px;
+    border-radius: 0px 0px 5px 5px;
+}
+.floatR {
+    float: right;
+}
+.bar {
+    min-height: 15px;
+    padding: 10px;
+    border: 1px grey solid;
+    margin-top: 10px;
+}
+.card_rank {
+    display: flex;
+    justify-content: space-between;
+}
+.main {
+    width: 818px;
+    margin-top: 27px;
+    margin-left: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px grey solid;
+    background-image: url('https://st2.depositphotos.com/1907069/5310/i/600/depositphotos_53107419-stock-photo-army-camouflage-background.jpg');
+    background-size: cover
+}
+.rank {
+    width: 500px;
+    height: 390px;
+    margin-top: 30px;
+    color: white;
+    border: 1px grey solid;
+    padding: 5px;
+    border-radius: 10px;
+    background-image: url('https://st2.depositphotos.com/1907069/5310/i/600/depositphotos_53107419-stock-photo-army-camouflage-background.jpg');
+    background-size: cover;
+}
