@@ -2,9 +2,28 @@ body {
     margin: 0;
     padding: 0;
 }
+@keyframes rotationCard {
+    0% {
+        transform: translate(0,0)
+    }
+    50% {
+        transform: translate(0,10px)
+    }
+    100% {
+        transform: translate(0,0)
+    }
+}
 .titulo {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1100px;
+
+}
+
+.titulo-img {
+    height: 100px;
+    background: rgb(218, 218, 218);
+    padding: 5px;
+    border-radius: 0 0 5px 5px;
 }
 .container {
     max-width: 1100px;
@@ -12,12 +31,13 @@ body {
 }
 .btn {
     height: 400px;
-    width: 300px;
+    width: 30%;
     color: wheat;
     background-color: black;
     border: 0px;
     border-radius: 5px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.300);
+    animation: 1s ease-out 0s 1 rotationCard;
     transition: 0.2s;
 }
 .btn:hover {
@@ -57,11 +77,17 @@ body {
 .div_img {
     background-repeat: no-repeat;
     background-size: cover;
+    background-position-x: center;
     width: 100%;
     height: 65%;
     border: 1px grey solid;
     border-radius: 5px;
+
 }
+#inimigo {
+    transform: scaleX(-1);
+}
+
 .anti-tank {
     background-image: url("anti_tank.jpg");
 }
@@ -73,4 +99,31 @@ body {
 }
 hr {
     border: 1px #747766 solid;
+}
+.vezes {
+        text-align: center;
+        color: rgb(255 255 255);
+        font-size: 6rem;
+}
+.recomecar {
+    flex-direction: column;
+    justify-content: center;
+    background-image: url('depositphotos_53107419-stock-photo-army-camouflage-background.jpg');
+    padding: 25px;
+    border-radius: 10px;
+    margin: auto;
+}
+.recomecar-btn {
+        border: 1px white solid;
+        padding: 5px;
+        border-radius: 5px;
+        background-color: #5f5555;
+        color: white;
+        cursor: pointer;
+        transition: 0.3s;
+}
+.recomecar-btn:hover {
+    background-color: white;
+    border: 1px #5f5555 solid;
+    color: #5f5555;
 }
