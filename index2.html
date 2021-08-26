@@ -13,7 +13,7 @@
 <body>
 
     <div class="titulo">
-        <img src="titulo.png" alt="">
+        <img class="titulo-img" src="titulo.png" alt="">
     </div>
 
     <div class="container">
@@ -23,7 +23,7 @@
         <hr>
         <br>
 
-        <div style="display: flex; justify-content: space-around;">
+        <div style="display: flex; justify-content: space-between;">
 
             <button class="btn" onclick="comecar(1)" id="card1">
                 <div class="div_img anti-tank"></div>
@@ -45,14 +45,13 @@
                 <img src="jkp_tesoura.png" alt="" class="dica_card">
             </button>
 
-        </div>
-        <br>
-
-        <hr>
-        <h2 style="text-align: center; color: rgb(0, 0, 0);">X</h2>
-        <hr>
+            <div id="versus" style="display: none;" class="recomecar">
+                <h2 class="vezes">X</h2>
+                <button class="recomecar-btn" onclick="recomecar()">Jogar de novo</button>
+            </div>
 
         <div class="div_cards" id="oponente" style="display: none; text-align: center;">
+            
 
             <button class="boot" id="card_boot">
                 <div class="div_img" id="inimigo"></div>
@@ -61,6 +60,10 @@
             </button>
 
         </div>
+
+        </div>
+
+
 
     </div>
 
@@ -95,6 +98,7 @@
         card1.style.display = '';
         card2.style.display = '';
         card3.style.display = '';
+        versus.style.display = 'none';
         oponente.style.display = 'none';
 
         document.getElementById(`card1`).disabled = false;
@@ -110,17 +114,21 @@
 
             if (carta != 1) {
                 card1.style.display = 'none';
+                versus.style.display = 'none';
             }
             if (carta != 2) {
                 card2.style.display = 'none';
+                versus.style.display = 'none';
             }
             if (carta != 3) {
                 card3.style.display = 'none';
+                versus.style.display = 'none';
             }
 
             let boot = parseInt(Math.random() * 3 + 1);
             console.log(`Jogador: ${carta} e Boot: ${boot}`);
 
+            versus.style.display = 'block';
             oponente.style.display = 'block';
             inimigo.style = `background-image: url(${card_oponente[boot - 1].image})`;
             dica_inimigo.src = `${card_oponente[boot - 1].dica}`;
